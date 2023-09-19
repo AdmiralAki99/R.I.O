@@ -44,7 +44,7 @@ void init_time_selection_button();
 void init_time_selection_button_style();
 void time_selection_screen_event_cb(lv_event_t* event);
 
-char* menu_label[] = {"Music", "Drone Feed", "Weather","To-do List","Set Time"};
+char* menu_label[] = {"Music", "Drone Feed", "Weather","To-do List","Set Time","Over The Air","Settings"};
 
 void (*menu_functions[])(lv_event_t*) = {music_button_cb,drone_feed_button_cb,weather_button_cb,todoList_button_cb,set_time_button_cb};
 
@@ -55,42 +55,29 @@ void init_main_menu_screen(lv_obj_t* scr){
 }
 
 void init_main_menu_screen_scroll(lv_obj_t* scr){
-    lv_obj_set_style_bg_color(scr, LV_COLOR_BLACK, 0);
-    main_menu = lv_obj_create(scr);
-    lv_obj_set_size(main_menu, SCREEN_WIDTH,SCREEN_HEIGHT);
-    lv_obj_align(main_menu, LV_ALIGN_CENTER, 0, 0);
-    lv_obj_set_flex_flow(main_menu, LV_FLEX_FLOW_COLUMN);
-    lv_obj_set_style_bg_color(main_menu, LV_COLOR_BLACK, 0);
-    // lv_obj_add_event_cb(main_menu, scroll_event_main_menu_cb, LV_EVENT_SCROLL, NULL);
-    lv_obj_add_event_cb(scr, main_menu_event_cb, LV_EVENT_GESTURE, NULL);
+   main_menu = lv_obj_create(scr);
+   lv_obj_set_size(main_menu,240,240);
+   lv_obj_align(main_menu,LV_ALIGN_CENTER,0,0);
+   lv_obj_set_flex_flow(main_menu,LV_FLEX_FLOW_COLUMN);
+//    lv_obj_add_event_cb(main_menu,scroll_event_main_menu_cb,LV_EVENT_SCROLL,NULL);
+   lv_obj_set_style_radius(main_menu,LV_RADIUS_CIRCLE,0);
+   lv_obj_set_style_clip_corner(main_menu,true,0);
+   lv_obj_set_scroll_dir(main_menu,LV_DIR_VER);
+   lv_obj_set_scroll_snap_x(main_menu,LV_SCROLL_SNAP_CENTER);
+   lv_obj_set_scrollbar_mode(main_menu,LV_SCROLLBAR_MODE_OFF);
 
-    lv_obj_set_style_radius(main_menu, LV_RADIUS_CIRCLE, 0);
-    lv_obj_set_style_border_width(main_menu, 0, 0);
-    lv_obj_set_style_clip_corner(main_menu, true, 0);
-    lv_obj_set_scroll_dir(main_menu, LV_DIR_VER);
-    lv_obj_set_scroll_snap_y(main_menu, LV_SCROLL_SNAP_CENTER);
-    lv_obj_set_scrollbar_mode(main_menu, LV_SCROLLBAR_MODE_OFF);
+   for(uint8_t i=0;i<7;i++){
+        lv_obj_t* menu_button = lv_btn_create(main_menu);
+        lv_obj_set_width(menu_button,240);
+        lv_obj_t* label = lv_label_create(menu_button);
+        lv_label_set_text(label,menu_label[i]);
+        lv_obj_add_event_cb(menu_button,menu_functions[i],LV_EVENT_CLICKED,NULL);
+        lv_obj_set_parent(menu_button, main_menu);
+        lv_obj_set_parent(label, menu_button);
+   }
 
-    for(int i = 0;i<sizeof(menu_label)/sizeof(menu_label[0]);i++){
-        lv_obj_t* scroll_btn = lv_btn_create(main_menu);
-        lv_obj_set_width(scroll_btn, 200);
-        lv_obj_set_style_bg_color(scroll_btn, lv_palette_main(LV_PALETTE_CYAN), 0);
-        lv_obj_set_style_bg_opa(scroll_btn, LV_OPA_TRANSP, 0);
-        lv_obj_set_style_border_width(scroll_btn, 0, 0);
-        lv_obj_set_style_outline_opa(scroll_btn, LV_OPA_TRANSP, 0);
-        lv_obj_set_style_outline_color(scroll_btn, lv_palette_main(LV_PALETTE_CYAN), 0);
-        lv_obj_add_event_cb(scroll_btn, menu_functions[i], LV_EVENT_CLICKED, NULL);
-
-        lv_obj_t* scroll_label = lv_label_create(scroll_btn);
-        lv_label_set_text(scroll_label, menu_label[i]);
-    }
-
-    lv_event_send(main_menu, LV_EVENT_SCROLL, NULL);
-    lv_obj_scroll_to_view(lv_obj_get_child(main_menu, 0), LV_ANIM_OFF);
-    lv_obj_set_style_anim_speed(main_menu, 100, 0);
-
-    lv_obj_set_parent(main_menu, scr);
-
+   lv_event_send(main_menu,LV_EVENT_REFRESH,NULL);
+   lv_obj_scroll_to_view(lv_obj_get_child(main_menu,0),LV_ANIM_OFF);
 }
 
 void scroll_event_main_menu_cb(lv_event_t * e)
@@ -101,7 +88,7 @@ void scroll_event_main_menu_cb(lv_event_t * e)
     lv_obj_get_coords(cont, &cont_a);
     lv_coord_t cont_y_center = cont_a.y1 + lv_area_get_height(&cont_a) / 2;
 
-    lv_coord_t r = lv_obj_get_height(cont) * 7 / 10;
+    lv_coord_t r = lv_obj_get_height(cont) * 5 / 10;
     uint32_t i;
     uint32_t child_cnt = lv_obj_get_child_cnt(cont);
     for(i = 0; i < child_cnt; i++) {
