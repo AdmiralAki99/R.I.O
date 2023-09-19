@@ -233,11 +233,11 @@ void initialize_linemeter(lv_obj_t* linemeter,lv_style_t* linemeter_style,lv_obj
   lv_meter_set_scale_major_ticks(linemeter,hour_scale,1,2,20,LV_COLOR_WHITE,10); // Set Scale for hour ticks
   lv_meter_set_scale_range(linemeter,hour_scale,0,12,330,300); // Set Range for hour ticks
 
-  lv_meter_scale_t* minute_scale = lv_meter_add_scale(linemeter);
-  lv_meter_set_scale_ticks(linemeter,minute_scale,61,1,10,LV_COLOR_GREY); // Set Scale for minute ticks
-  lv_meter_set_scale_range(linemeter,minute_scale,0,60,360,270); // Set Range for minute ticks
+  // lv_meter_scale_t* minute_scale = lv_meter_add_scale(linemeter);
+  // lv_meter_set_scale_ticks(linemeter,minute_scale,61,1,10,LV_COLOR_GREY); // Set Scale for minute ticks
+  // lv_meter_set_scale_range(linemeter,minute_scale,0,60,360,270); // Set Range for minute ticks
 
-  lv_meter_indicator_t* battery_indicator = lv_meter_add_arc(linemeter,hour_scale,1,LV_COLOR_RED,0);
+  // lv_meter_indicator_t* battery_indicator = lv_meter_add_arc(linemeter,hour_scale,1,LV_COLOR_RED,0);
 
   // lv_meter_set_indicator_start_value(linemeter,battery_indicator,0);
   // lv_meter_set_indicator_end_value(linemeter,battery_indicator,50);
@@ -251,9 +251,6 @@ void linemeter_cb(lv_event_t* event){
     init_main_menu_screen(main_menu_screen);
     delay(100);
     lv_scr_load(main_menu_screen);
-  }else if(lv_event_get_code(event) == LV_EVENT_LONG_PRESSED){
-    //todo: Add LONG PRESS Functions
-    // Serial.println("Long Pressed!!");
   }
 }
 
