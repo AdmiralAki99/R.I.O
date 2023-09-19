@@ -61,6 +61,7 @@ void initialize_linemeter_style(lv_style_t* linemeter_style);
 void initialize_linemeter(lv_obj_t* linemeter,lv_style_t* linemeter_style,lv_obj_t* act_scr);
 void linemeter_cb(lv_event_t* event);
 void screen_cb(lv_event_t* event);
+void long_press_cb(lv_event_t* event);
 void flashlight_cb(lv_event_t* event);
 void flashlight_toggle_cb(lv_event_t* event);
 
@@ -207,7 +208,7 @@ void initialize_hour_hand(lv_obj_t** hour_line, lv_style_t* hour_hand_style, lv_
 
 static void background_dial_cb(lv_event_t event)
 {
-        Serial.println("Dial Pressed,Creating A New Screen");
+  Serial.println("Dial Pressed,Creating A New Screen");
 }
 
 void initialize_linemeter_style(lv_style_t* linemeter_style){
@@ -225,8 +226,9 @@ void initialize_linemeter(lv_obj_t* linemeter,lv_style_t* linemeter_style,lv_obj
   lv_obj_set_style_bg_color(linemeter,LV_COLOR_BLACK,0);
   lv_obj_set_style_text_color(linemeter,LV_COLOR_BLACK,0);
   lv_obj_set_style_border_width(linemeter,0,0);
-  lv_obj_add_event_cb(linemeter,linemeter_cb,LV_EVENT_CLICKED,NULL);
+  lv_obj_add_event_cb(linemeter,linemeter_cb,LV_EVENT_ALL,NULL);
   lv_obj_add_event_cb(linemeter,flashlight_cb,LV_EVENT_CLICKED,NULL);
+  // lv_obj_add_event_cb(linemeter,long_press_cb,LV_EVENT_ALL,NULL);
 
   lv_meter_scale_t* hour_scale = lv_meter_add_scale(linemeter);
   lv_meter_set_scale_ticks(linemeter,hour_scale,12,0,0,LV_COLOR_WHITE); // Set Scale for hour ticks
@@ -251,6 +253,8 @@ void linemeter_cb(lv_event_t* event){
     init_main_menu_screen(main_menu_screen);
     delay(100);
     lv_scr_load(main_menu_screen);
+  }else if(lv_event_get_code(event) == LV_EVENT_LONG_PRESSED){
+    Serial.println("Long Pressed");
   }
 }
 
@@ -268,6 +272,10 @@ void screen_cb(lv_event_t* event){
     lv_scr_load(time_screen);
     lv_obj_del(flashlight);
   }
+}
+
+void long_press_cb(lv_event_t* event){
+
 }
 
 void flashlight_toggle_cb(lv_event_t* event){
