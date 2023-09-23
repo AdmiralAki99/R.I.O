@@ -57,3 +57,5 @@ lv_obj_t* main_screen;
 
 TinyGPSPlus gps = TinyGPSPlus();
 SoftwareSerial ss(GPS_RX_PIN, GPS_TX_PIN);
+
+#define ANALOG_WATCH_FACE
