@@ -10,91 +10,6 @@
 #include <esp_bt.h>
 #include "driver/adc.h"
 
-
- static uint8_t* message = (uint8_t*)malloc(sizeof(7));
-
-// void flush_display(lv_disp_drv_t *disp,const lv_area_t *area,lv_color_t* colour){
-//   uint32_t w = (area->x2 - area->x1 + 1);
-//   uint32_t h = (area->y2 - area->y1 + 1);
-
-//   tft.startWrite();
-//   tft.setAddrWindow(area->x1,area->y1,w,h);
-//   tft.pushColors((uint16_t*)&colour->full,(w*h),true);
-//   tft.endWrite();
-
-//   lv_disp_flush_ready(disp);
-// }
-
-// void touchpad_event(lv_indev_drv_t* indev_driver,lv_indev_data_t* touch_data){
-//    uint16_t x,y;
-//    char* gesture;
-//    static lv_area_t area;
-//    static lv_obj_t* child_obj;
-//    static lv_coord_t ui_x,ui_y,ui_w,ui_h;
-//     if (touch.available()) {
-//       if(screen_sleep == false){
-//         touch_data->state = LV_INDEV_STATE_PR;
-//         x = touch.data.x;
-//         y = touch.data.y;
-//         touch_data->point.x = x;
-//         touch_data->point.y = y;
-//       }
-     
-
-//       // Serial.println("X: "+String(x));
-//       // Serial.println("Y: "+String(y));
-//       // for(int i=0;i<lv_obj_get_child_cnt(lv_scr_act());i++){
-//       //   child_obj = lv_obj_get_child(lv_scr_act(),i);
-//       //   lv_obj_get_click_area(child_obj,&area);
-//       //   ui_x = lv_obj_get_x(child_obj);
-//       //   ui_y = lv_obj_get_y(child_obj);
-//       //   ui_w = lv_obj_get_x2(child_obj);
-//       //   ui_h = lv_obj_get_y2(child_obj);
-        
-//       //   if((x >= area.x1 && x<= area.x2) && (y >= area.y1 && y<= area.y2) && (lv_obj_get_state(child_obj) != LV_STATE_DISABLED)){
-//       //     Serial.println("Child Found");
-//       //     if(String(touch.gesture().c_str()) == "SINGLE CLICK"){
-//       //       lv_event_send(child_obj,LV_EVENT_CLICKED,NULL);
-//       //       lv_obj_set_user_data(child_obj,main_screen);
-//       //       break;
-//       //     }else if(String(touch.gesture().c_str()) == "LONG PRESS"){
-//       //       lv_event_send(child_obj,LV_EVENT_LONG_PRESSED,NULL);
-//       //       break;
-//       //     }else if(String(touch.gesture().c_str()) == "SWIPE LEFT"){
-//       //       // lv_event_send(child_obj,LV_EVENT_GESTURE,NULL);
-//       //       // Serial.println(lv_indev_get_scroll_dir(lv_indev_get_act()));
-//       //       break;
-//       //     }else if(String(touch.gesture().c_str()) == "SWIPE UP"){
-//       //       Serial.println("Scroll Initiated");
-//       //       lv_event_send(child_obj,LV_EVENT_SCROLL,NULL);
-//       //       break;
-//       //     }
-//       //   }else{
-//       //     // Serial.println("Not Clicked");
-//       //   }
-//       // }
-
-    
-  
-//     }else{
-//       touch_data->state = LV_INDEV_STATE_REL;
-//     }
-
-// }
-
-// void avrc_metadata_callback(uint8_t id, const uint8_t *text) {
-//   switch(id){
-//      case ESP_AVRC_MD_ATTR_TITLE:
-//         Serial.print("Title: ");
-//         // title = (char*)text;
-//         break;
-//      case ESP_AVRC_MD_ATTR_ARTIST:
-//         Serial.print("Artist: ");
-//         // artist = (char*)text;
-//         break;
-//   }
-
-// }
 time_t current_time;
 
 void test_cb(lv_obj_t * obj, lv_event_t event)
@@ -126,8 +41,6 @@ void setup() {
   init_watch();
 
   init_ble_server();
-
-  message = (uint8_t*)"Message";
 
   // xTaskCreatePinnedToCore(sendMessage(&message[0],7),"Send Message",10000,NULL,1,&bluetooth_task_handle,1);
 
