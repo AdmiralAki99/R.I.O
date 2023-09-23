@@ -249,12 +249,14 @@ void initialize_linemeter(lv_obj_t* linemeter,lv_style_t* linemeter_style,lv_obj
 
 void linemeter_cb(lv_event_t* event){
   if(lv_event_get_code(event) == LV_EVENT_CLICKED){
-    main_menu_screen = lv_obj_create(NULL);
-    init_main_menu_screen(main_menu_screen);
-    delay(100);
-    lv_scr_load(main_menu_screen);
-  }else if(lv_event_get_code(event) == LV_EVENT_LONG_PRESSED){
-    Serial.println("Long Pressed");
+    if(String(touch.gesture().c_str()) == "LONG PRESS"){
+      main_menu_screen = lv_obj_create(NULL);
+      init_main_menu_screen(main_menu_screen);
+      delay(100);
+      lv_scr_load(main_menu_screen);
+    }else{
+     
+    }
   }
 }
 
