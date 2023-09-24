@@ -2,25 +2,6 @@
 #include <BLEUtils.h>
 #include <BLEServer.h>
 
-// class BLECallback : public BLECharacteristicCallbacks{
-//     void onWrite(BLECharacteristic* pCharacteristic){
-//         Serial.println("BLE Write Request");
-//     }
-
-//     void onRead(BLECharacteristic* pCharacteristic){
-//         Serial.println("BLE Read Request");
-//     }
-// };
-
-// std::string parseMusicData(char* musicMessage){
-//   char *tokens = strtok(musicMessage,"$");
-
-//   while(tokens != NULL){
-//     Serial.println(tokens);
-//     tokens = strtok(NULL,"$");
-//   }
-// }
-
 /**
  * Bluetooth Variables
 */
@@ -38,6 +19,11 @@ static BLEAdvertising* pAdvertising;
 std::string ble_music_value = "";
 static std::string ble_time_value;
 
+/**
+ * BLE Callbacks for Each Characteristic
+*/
+
+//Music Callback handles music metadata
 
 class MusicBLECallback : public BLECharacteristicCallbacks{
     void onWrite(BLECharacteristic* pCharacteristic){
@@ -69,6 +55,8 @@ class MusicBLECallback : public BLECharacteristicCallbacks{
     }
 };
 
+// Time Callback handles time metadata
+
 class TimeBLECallback : public BLECharacteristicCallbacks{
   void onWrite(BLECharacteristic* pCharacteristic){
      pAdvertising->stop();
@@ -88,6 +76,8 @@ class TimeBLECallback : public BLECharacteristicCallbacks{
     
   }
 };
+
+//General Server Callback
 
 class BLEServerCallback : public BLEServerCallbacks{
   void onConnect(BLEServer* pServer){
