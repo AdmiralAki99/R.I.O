@@ -341,7 +341,7 @@ void init_ble_server(){
                                          BLECharacteristic::PROPERTY_WRITE
                                        );
 
-  mCharacteristic->setValue("Hello World");
+  mCharacteristic->setValue("Music Metadata");
   mCharacteristic->setCallbacks(new MusicBLECallback());
 
   tCharacteristic = pService->createCharacteristic(TIME_CHARACTERISTIC_UUID,BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE);
@@ -362,17 +362,13 @@ void readMessage(){
 
 }
 
-TaskFunction_t sendMessage(uint8_t *message,int length){
+void sendMessage(char *message,int length){
   uint8_t transmit = 0;
 
-  // for(uint8_t i =0 ; i< length ; i++){
-  //   pCharacteristic->setValue(&message[i],1);
-  //   pCharacteristic->notify();
-  //   delay(100);
-  // }
-
-  for(;;){
-    Serial.println("Sending Message");
+  for(uint8_t i =0 ; i< length ; i++){
+    mCharacteristic->setValue(message);
+    mCharacteristic->notify();
+    delay(100);
   }
 }
 

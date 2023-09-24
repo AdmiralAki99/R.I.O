@@ -78,6 +78,7 @@ void initialize_music_spectrum_style(lv_style_t* bar_style);
 void init_spectrum_bars(lv_obj_t* bars[],lv_style_t* bar_style,lv_obj_t* act_scr);
 void update_play_button_cb(lv_timer_t *task);
 void play_button_cb(lv_event_t* event);
+void pause_button_cb(lv_event_t* event);
 void update_song_label(lv_timer_t * timer);
 void artist_label_cb(lv_event_t* event);
 void forward_button_cb(lv_event_t* event);
@@ -175,7 +176,7 @@ void init_music_forward_button(lv_obj_t* forward_button,lv_style_t* forward_butt
     lv_obj_align(forward_button,LV_ALIGN_CENTER,50,60);
     lv_obj_add_style(forward_button,forward_button_style,0);
     lv_obj_set_style_bg_opa(forward_button,0,0);
-    lv_obj_add_event_cb(forward_button,forward_button_cb,LV_EVENT_CLICKED,NULL);
+    lv_obj_add_event_cb(forward_button,forward_button_cb,LV_EVENT_ALL,NULL);
     
     lv_obj_t* forward_icon = lv_label_create(forward_button);
     lv_label_set_text(forward_icon,LV_SYMBOL_NEXT);
@@ -272,18 +273,21 @@ void play_button_cb(lv_event_t* event){
 }
 
 void forward_button_cb(lv_event_t* event){
-    if(lv_event_get_code(event) == LV_EVENT_CLICKED){
+    if(lv_event_get_code(event) == LV_EVENT_SHORT_CLICKED){
         Serial.println("Forward button clicked");
-    //    lv_label_set_text(song_label,"Clicked");
-    //     lv_obj_del(song_label);
-        // a2dp_sink.next();
+        sendMessage("Skip",4);
     }
 }
 
 void rewind_button_cb(lv_event_t* event){
-    if(lv_event_get_code(event) == LV_EVENT_CLICKED){
+    Serial.println("Rewind button clicked");
+    sendMessage("Rewind",4);
+}
+
+void pause_button_cb(lv_event_t* event){
+    if(lv_event_get_code(event) == LV_EVENT_SHORT_CLICKED){
         Serial.println("Rewind button clicked");
-        // a2dp_sink.next();
+        sendMessage("Rewind",4);
     }
 }
 
@@ -355,11 +359,9 @@ void update_play_button_cb(lv_timer_t * timer){
     if(is_playing){
             lv_label_set_text(play_icon,LV_SYMBOL_PLAY);
             is_playing = false;
-            // a2dp_sink.pause();
         }else{
             lv_label_set_text(play_icon,LV_SYMBOL_PAUSE);
             is_playing = true;
-            // a2dp_sink.play();
         }
 
         Serial.println("Play button clicked");
@@ -376,7 +378,6 @@ void screen_event_cb(lv_event_t* event){
 }
 
 void update_song_label(lv_timer_t * timer){
-    // lv_label_set_text_fmt(song_label_name,"%s",ble_music_value.c_str());
     if(has_music_metadata_changed){
         title = (char*) ble_music_value.c_str();
         lv_label_set_text(song_label_name,title);
