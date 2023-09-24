@@ -525,7 +525,7 @@
  .pio/libdeps/um_tinys3/EspSoftwareSerial/src/SoftwareSerial.h \
  .pio/libdeps/um_tinys3/EspSoftwareSerial/src/circular_queue/circular_queue.h \
  .pio/libdeps/um_tinys3/EspSoftwareSerial/src/circular_queue/Delegate.h \
- .pio/libdeps/um_tinys3/Time/TimeLib.h \
+ .pio/libdeps/um_tinys3/Time/TimeLib.h src/ble_config.h \
  /Users/akhilesh/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEDevice.h \
  /Users/akhilesh/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_gap_ble_api.h \
  /Users/akhilesh/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/bt/host/bluedroid/api/include/api/esp_bt_defs.h \
@@ -554,7 +554,7 @@
  /Users/akhilesh/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEUtils.h \
  /Users/akhilesh/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEUtils.h \
  /Users/akhilesh/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src/BLEServer.h \
- src/ble_config.h src/parsecs.h src/time_screen.h src/main_menu_screen.h \
+ src/parsecs.h src/time_screen.h src/main_menu_screen.h \
  src/music_screen.h src/drone_feed_screen.h src/todoList_screen.h \
  /Users/akhilesh/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/driver/include/driver/adc.h \
  /Users/akhilesh/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/hal/include/hal/adc_types.h

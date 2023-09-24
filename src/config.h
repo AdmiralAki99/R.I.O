@@ -9,9 +9,6 @@
 #include <TinyGPSPlus.h>
 #include <SoftwareSerial.h>
 #include <TimeLib.h>
-#include <BLEDevice.h>
-#include <BLEUtils.h>
-#include <BLEServer.h>
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
