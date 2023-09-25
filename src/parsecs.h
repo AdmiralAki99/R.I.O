@@ -156,7 +156,13 @@ void init_system_variables(){
  * LVGL Helper Functions
 */
 
-//Render Screen
+/**
+ * @brief This method is responsible for drawing on the screen bu flushing and double buffering the display
+ * 
+ * @param disp The display driver
+ * @param area The area of the screen using SCREEN_WIDTH x SCREEN_HEIGHT
+ * @param colour Colour Range of the display
+ */
 void flush_display(lv_disp_drv_t *disp,const lv_area_t *area,lv_color_t* colour){
   uint32_t w = (area->x2 - area->x1 + 1);
   uint32_t h = (area->y2 - area->y1 + 1);
@@ -169,7 +175,12 @@ void flush_display(lv_disp_drv_t *disp,const lv_area_t *area,lv_color_t* colour)
   lv_disp_flush_ready(disp);
 }
 
-//Touchpad Event Handler
+/**
+ * @brief Handles the Touch Events on the Screen
+ * 
+ * @param indev_driver Touch screen driver
+ * @param touch_data Touch Screen Event
+ */
 
 void touchpad_event(lv_indev_drv_t* indev_driver,lv_indev_data_t* touch_data){
    uint16_t x,y;
@@ -232,6 +243,11 @@ void touchpad_event(lv_indev_drv_t* indev_driver,lv_indev_data_t* touch_data){
  * System Helper Functions
 */
 
+/**
+ * @brief Set the Modem Sleep
+ * 
+ */
+
 void setModemSleep(){
   WiFi.setSleep(true);
   if(!setCpuFrequencyMhz(80)){
@@ -242,12 +258,22 @@ void setModemSleep(){
   }
 }
 
+/**
+ * @brief Wake the Modem from Sleep
+ * 
+ */
+
 void wakeModemSleep(){
   setCpuFrequencyMhz(240);
   WiFi.setSleep(false);
   // Serial.println("Modem Wake");
   modem_sleep=false;
 }
+
+/**
+ * @brief Increment the Global Timer Variable and put to sleep if the timer exceeds the SLEEP_TIMEOUT
+ * 
+ */
 
 void incrementCounter() {
   timer++;
@@ -269,6 +295,11 @@ void incrementCounter() {
       setModemSleep();
   }
 }
+
+/**
+ * @brief Create and attach global timer
+ * 
+ */
 
 void initTimer(){
   ticker.attach(1.0,incrementCounter);
@@ -323,9 +354,19 @@ void gps_task(void *parameter){
   
 }
 
+/**
+ * @brief Begin Adversiting the BLE Server
+ * 
+ */
+
 void advertise_ble_server(){
   pAdvertising->start();
 }
+
+/**
+ * @brief Create BLE Server and BLE Service
+ * 
+ */
 
 void init_ble_server(){
   Serial.begin(115200);
@@ -361,8 +402,13 @@ void init_ble_server(){
 void readMessage(){
 
 }
-
-void sendMessage(char *message,int length){
+/**
+ * @brief Method to Send Message to Paired Smartphone App to trigger actions
+ * 
+ * @param message 
+ * @param length 
+ */
+void sendMusicState(char *message,int length){
   uint8_t transmit = 0;
 
   for(uint8_t i =0 ; i< length ; i++){
@@ -372,4 +418,4 @@ void sendMessage(char *message,int length){
   }
 }
 
-//todo: Function to Parse Music Information
+//TODO: Implement Multiple Functions to parse characteristics and states for corresponding characteristics

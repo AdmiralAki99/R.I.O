@@ -275,20 +275,13 @@ void play_button_cb(lv_event_t* event){
 void forward_button_cb(lv_event_t* event){
     if(lv_event_get_code(event) == LV_EVENT_SHORT_CLICKED){
         Serial.println("Forward button clicked");
-        sendMessage("Skip",4);
+        sendMusicState("Skip",4);
     }
 }
 
 void rewind_button_cb(lv_event_t* event){
     Serial.println("Rewind button clicked");
-    sendMessage("Rewind",4);
-}
-
-void pause_button_cb(lv_event_t* event){
-    if(lv_event_get_code(event) == LV_EVENT_SHORT_CLICKED){
-        Serial.println("Rewind button clicked");
-        sendMessage("Rewind",4);
-    }
+    sendMusicState("Rewind",4);
 }
 
 void update_music_screen(){
