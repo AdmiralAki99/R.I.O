@@ -1,3 +1,13 @@
+/**
+ * @file time_screen.h
+ * @author Akhilesh Warty
+ * @brief Time Screen for the Smart Watch
+ * @version 0.3
+ * @date 2023-09-25
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #pragma once
 
 #include <lvgl.h>

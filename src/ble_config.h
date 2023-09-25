@@ -1,3 +1,14 @@
+/**
+ * @file ble_config.h
+ * @author Akhilesh Warty
+ * @brief BLE Server Module for Smartwatch
+ * @version 0.2
+ * @date 2023-09-25
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include <BLEDevice.h>
 #include <BLEUtils.h>
 #include <BLEServer.h>

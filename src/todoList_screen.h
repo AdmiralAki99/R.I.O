@@ -1,3 +1,13 @@
+/**
+ * @file todoList_screen.h
+ * @author Akhilesh Warty
+ * @brief Todo List Screen for Smart Watch
+ * @version 0.1
+ * @date 2023-09-25
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include "parsecs.h"
 
 static lv_obj_t* todo_screen;

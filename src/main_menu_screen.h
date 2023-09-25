@@ -1,3 +1,13 @@
+/**
+ * @file main_menu_screen.h
+ * @author Akhilesh
+ * @brief Main Menu Screen of the Smartwatch
+ * @version 0.3
+ * @date 2023-09-25
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include "parsecs.h"
 
 #include "music_screen.h"

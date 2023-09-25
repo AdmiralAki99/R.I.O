@@ -1,3 +1,14 @@
+/**
+ * @file music_screen.h
+ * @author Akhilesh Warty
+ * @brief Music Screen of the Smartwatch
+ * @version 0.3
+ * @date 2023-09-25
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include "parsecs.h"
 #include <math.h>
 

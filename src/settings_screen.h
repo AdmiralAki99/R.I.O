@@ -1,4 +1,14 @@
-#include "config.h"
+/**
+ * @file settings_screen.h
+ * @author Akhilesh Warty
+ * @brief Settings Screen of Smart Watch
+ * @version 0.1
+ * @date 2023-09-25
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+#include "parsecs.h"
 
 #define LV_COLOR_BLACK  LV_COLOR_MAKE(0x00, 0x00, 0x00)
 #define LV_COLOR_WHITE LV_COLOR_MAKE(0xFF, 0xFF, 0xFF)
