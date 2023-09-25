@@ -1,5 +1,16 @@
+/**
+ * @file Parsecs.h
+ * @author Akhilesh
+ * @brief Umbrella for all the global functions and variables
+ * @version 0.3
+ * @date 2023-09-25
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #pragma once
 #include <config.h>
+
 
 /**
  * Global Declarations
