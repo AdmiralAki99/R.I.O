@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include <TFT_eSPI.h>
 #include <lvgl.h>
 #include <CST816S.h>
@@ -9,6 +10,7 @@
 #include <TinyGPSPlus.h>
 #include <SoftwareSerial.h>
 #include <TimeLib.h>
+#include <FS.h>
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"

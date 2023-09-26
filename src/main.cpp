@@ -9,19 +9,9 @@
 #include <WiFi.h>
 #include <esp_bt.h>
 #include "driver/adc.h"
+#include <FS.h>
 
 time_t current_time;
-
-void test_cb(lv_obj_t * obj, lv_event_t event)
-{
-    Serial.println("Dial Pressed");
-    if(lv_event_get_code(&event) == LV_EVENT_CLICKED) {
-        // Button was clicked
-        Serial.println("Dial Pressed,Creating A New Screen");
-    }
-}
-
-lv_obj_t* btn;
 
 void setup() {
   // put your setup code here, to run once:
@@ -41,6 +31,8 @@ void setup() {
   init_watch();
 
   init_ble_server();
+
+  // tft.fillScreen(TFT_WHITE);
 
   // xTaskCreatePinnedToCore(sendMessage(&message[0],7),"Send Message",10000,NULL,1,&bluetooth_task_handle,1);
 
@@ -145,7 +137,7 @@ void setup() {
 
   // lv_img_set_src(img_obj,"A:src/space.jpg");
 
-  // lv_scr_load(main_screen);
+  lv_scr_load(main_screen);
   initTimer();
 
   // Serial.begin(115200);
@@ -153,6 +145,9 @@ void setup() {
 }
 
 void loop() {
+  // Open a large JPEG image stored in FLASH memory (included as thumb_test.h)
+  // This image is 12 megapixels, but has a 320x240 embedded thumbnail in it
+
   // put your main code here, to run repeatedly
 
   // sendMessage(&message[0],7);
