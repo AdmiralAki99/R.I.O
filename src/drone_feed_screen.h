@@ -15,7 +15,10 @@
 
 static lv_obj_t* drone_feed_screen;
 static lv_obj_t* video_feed;
-static lv_color_t feed_buffer[LV_CANVAS_BUF_SIZE_TRUE_COLOR(100,100)];
+static lv_color_t feed_buffer[LV_CANVAS_BUF_SIZE_TRUE_COLOR(200,200)];
+
+static lv_obj_t* video_feed_canvas;
+
 
 lv_timer_t* droneFeedTimer;
 long lTime;
@@ -30,14 +33,17 @@ JPEGDEC jpeg;
 void init_screen(lv_obj_t* screen);
 void init_video_feed(lv_timer_t* timer);
 int drawFrame(JPEGDRAW *pDraw);
+void init_video_feed_canvas(lv_obj_t* screen);
 
 void init_drone_feed_screen(lv_obj_t* screen){
     drone_feed_screen = screen;
     lv_obj_set_style_bg_color(screen,LV_COLOR_BLACK,0);
     // lv_obj_set_style_bg_opa(screen,LV_OPA_0,0);
     // init_video_feed();
-    droneFeedTimer = lv_timer_create(init_video_feed,10000,NULL);
-    lv_timer_ready(droneFeedTimer);
+    // droneFeedTimer = lv_timer_create(init_video_feed,10000,NULL);
+    // lv_timer_ready(droneFeedTimer);
+    // tft.fillScreen(TFT_SKYBLUE);
+    init_video_feed_canvas(drone_feed_screen);
 
 }
 
@@ -76,4 +82,11 @@ int drawFrame(JPEGDRAW *pDraw){
     tft.pushPixels(pDraw->pPixels, pixelCount);
     return 1;
 
+}
+
+void init_video_feed_canvas(lv_obj_t* screen){
+    video_feed_canvas = lv_canvas_create(screen);
+    lv_canvas_set_buffer(video_feed_canvas,feed_buffer,200,200,LV_IMG_CF_TRUE_COLOR);
+    lv_obj_align(video_feed_canvas,LV_ALIGN_CENTER,0,0);
+    lv_canvas_fill_bg(video_feed_canvas,LV_COLOR_WHITE,LV_OPA_COVER);
 }
