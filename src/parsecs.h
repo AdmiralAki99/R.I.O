@@ -135,6 +135,7 @@ void init_tft_espi(){
   tft.setRotation(0);
   // Adding DMA for faster performance and access times
   // tft.initDMA();
+  // tft.startWrite();
 }
 
 void init_touch_screen_drivers(){

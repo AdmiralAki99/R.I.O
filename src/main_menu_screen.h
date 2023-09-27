@@ -188,10 +188,10 @@ void todoList_button_cb(lv_event_t* e){
 }
 
 void drone_feed_button_cb(lv_event_t* e){
-    // drone_feed_screen = lv_obj_create(NULL);
-    // init_drone_feed_screen(drone_feed_screen);
-    // lv_scr_load(drone_feed_screen);
-    // lv_obj_set_user_data(drone_feed_screen,main_menu_screen);
+    drone_feed_screen = lv_obj_create(NULL);
+    init_drone_feed_screen(drone_feed_screen);
+    lv_scr_load(drone_feed_screen);
+    lv_obj_set_user_data(drone_feed_screen,main_menu_screen);
 }
 
 void update_button_cb(lv_event_t* e){

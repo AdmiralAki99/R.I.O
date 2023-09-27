@@ -1,3 +1,4 @@
+
 #include "settings_screen.h"
 #include "parsecs.h"
 #include "time_screen.h"
@@ -9,7 +10,6 @@
 #include <WiFi.h>
 #include <esp_bt.h>
 #include "driver/adc.h"
-#include <FS.h>
 
 time_t current_time;
 

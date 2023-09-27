@@ -1,7 +1,6 @@
 #pragma once
 #include "parsecs.h"
-
-// #include "JPEGDEC.h"
+#include "JPEGDEC.h"
 
 /**
  * @brief Enum class for different states of video playback.
@@ -14,7 +13,7 @@ enum class VideoPlaybackState{
 
 class VideoPlayer{
     private:
-        // JPEGDEC decoder;
+        JPEGDEC decoder;
         TFT_eSPI* tft;
         VideoPlaybackState state;
 
