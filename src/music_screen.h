@@ -276,9 +276,11 @@ void play_button_cb(lv_event_t* event){
         if(is_playing){
             lv_label_set_text(play_icon,LV_SYMBOL_PLAY);
             is_playing = false;
+            sendMusicState("Pause",5);
         }else{
             lv_label_set_text(play_icon,LV_SYMBOL_PAUSE);
             is_playing = true;
+            sendMusicState("Play",4);
         }
     }
 }
@@ -368,7 +370,7 @@ void update_play_button_cb(lv_timer_t * timer){
             is_playing = true;
         }
 
-        Serial.println("Play button clicked");
+        // Serial.println("Play button clicked");
   }
 }
 
