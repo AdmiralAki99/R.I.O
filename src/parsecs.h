@@ -396,11 +396,11 @@ void init_ble_server(){
                                          BLECharacteristic::PROPERTY_WRITE
                                        );
 
-  mCharacteristic->setValue("Music Metadata");
+  // mCharacteristic->setValue("Music Metadata");
   mCharacteristic->setCallbacks(new MusicBLECallback());
 
   tCharacteristic = pService->createCharacteristic(TIME_CHARACTERISTIC_UUID,BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE);
-  tCharacteristic->setValue("Time Value");
+  // tCharacteristic->setValue("Time Value");
   tCharacteristic->setCallbacks(new TimeBLECallback());
   pService->start();
 
@@ -423,13 +423,15 @@ void readMessage(){
  * @param length 
  */
 void sendMusicState(char *message,int length){
-  uint8_t transmit = 0;
+  // uint8_t transmit = 0;
 
-  for(uint8_t i =0 ; i< length ; i++){
-    mCharacteristic->setValue(message);
-    mCharacteristic->notify();
-    delay(100);
-  }
+  // for(uint8_t i =0 ; i< length ; i++){
+  //   mCharacteristic->setValue(message);
+  //   mCharacteristic->notify();
+  //   delay(100);
+  // }
+  mCharacteristic->setValue(message);
+  mCharacteristic->notify();
 }
 
 //TODO: Implement Multiple Functions to parse characteristics and states for corresponding characteristics
