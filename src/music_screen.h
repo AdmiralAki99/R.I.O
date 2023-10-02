@@ -386,10 +386,12 @@ void screen_event_cb(lv_event_t* event){
 void update_song_label(lv_timer_t * timer){
     if(has_music_metadata_changed){
         title = (char*) ble_music_value.c_str();
+        artist = (char*) ble_music_artist.c_str();
         lv_label_set_text(song_label_name,title);
-        lv_label_set_text(artist_label_name,"John Mayer");
+        lv_label_set_text(artist_label_name,artist);
         has_music_metadata_changed = false;
         ble_music_value = "";
+        ble_music_artist = "";
     }
    
 }

@@ -28,7 +28,9 @@ static BLECharacteristic* tCharacteristic;
 static BLEAdvertising* pAdvertising;
 
 std::string ble_music_value = "";
+std::string ble_music_artist = "";
 static std::string ble_time_value;
+bool read_song = false;
 
 /**
  * BLE Callbacks for Each Characteristic
@@ -38,25 +40,29 @@ static std::string ble_time_value;
 
 class MusicBLECallback : public BLECharacteristicCallbacks{
     void onWrite(BLECharacteristic* pCharacteristic){
-      bool read_song = false;
       pAdvertising->stop();
+      read_song = false;
       std::string song = "";
       std::string artist = "";
       std::string value = pCharacteristic->getValue();
-      // if (value.length() > 0) {
-      //   for (int i = 0; i < value.length(); i++){
-      //     if(value[i] == ';'){
-      //       read_song = true;
-      //       break;
-      //     }
-      //     if(read_song == false){
-      //       song = song + value[i];
-      //     }else{
-      //       artist = artist + value[i];
-      //     }
-      //   }
-      // }
-      ble_music_value = pCharacteristic->getValue();
+      if (value.length() > 0) {
+        for (int i = 0; i < value.length(); i++){
+          if(value[i] == ';'){
+            read_song = true;
+            continue;
+          }
+          if(read_song == false){
+            song = song + value[i];
+          }else{
+            artist = artist + value[i];
+          }
+        }
+      }
+      Serial.println(song.c_str());
+      Serial.println(artist.c_str());
+
+      ble_music_value = song.c_str();
+      ble_music_artist = artist.c_str();
       has_music_metadata_changed = true;
       pAdvertising->start();
     }
