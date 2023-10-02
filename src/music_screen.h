@@ -389,6 +389,7 @@ void update_song_label(lv_timer_t * timer){
         lv_label_set_text(song_label_name,title);
         lv_label_set_text(artist_label_name,"John Mayer");
         has_music_metadata_changed = false;
+        ble_music_value = "";
     }
    
 }

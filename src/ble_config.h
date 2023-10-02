@@ -43,20 +43,20 @@ class MusicBLECallback : public BLECharacteristicCallbacks{
       std::string song = "";
       std::string artist = "";
       std::string value = pCharacteristic->getValue();
-      if (value.length() > 0) {
-        for (int i = 0; i < value.length(); i++){
-          if(value[i] == ';'){
-            read_song = true;
-            break;
-          }
-          if(read_song == false){
-            song = song + value[i];
-          }else{
-            artist = artist + value[i];
-          }
-        }
-      }
-      ble_music_value = ble_music_value + song;
+      // if (value.length() > 0) {
+      //   for (int i = 0; i < value.length(); i++){
+      //     if(value[i] == ';'){
+      //       read_song = true;
+      //       break;
+      //     }
+      //     if(read_song == false){
+      //       song = song + value[i];
+      //     }else{
+      //       artist = artist + value[i];
+      //     }
+      //   }
+      // }
+      ble_music_value = pCharacteristic->getValue();
       has_music_metadata_changed = true;
       pAdvertising->start();
     }
