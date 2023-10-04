@@ -27,7 +27,7 @@ void init_todoList_screen(lv_obj_t* act_scr);
 void init_todoList(lv_obj_t* scr,lv_obj_t* list,lv_style_t* list_style);
 void init_addTodoList(lv_obj_t* scr,lv_obj_t* list,lv_style_t* list_style,lv_obj_t* add_button);
 void updateTasksMethod(lv_timer_t* timer);
-static void event_handler(lv_event_t * e);
+void todoListevent_cb(lv_event_t * e);
 void addTask(char* task);
 void update_todoList(lv_obj_t* scr,lv_obj_t* list,lv_style_t* list_style);
 void createAddScreen(lv_obj_t* scr);
@@ -88,14 +88,17 @@ static void todo_scroll_event_cb(lv_event_t * e){
 }
 
 
-static void event_handler(lv_event_t * e)
+void todoListevent_cb(lv_event_t * e)
 {
     lv_event_code_t code = lv_event_get_code(e);
     lv_obj_t * obj = lv_event_get_target(e);
     if(code == LV_EVENT_VALUE_CHANGED) {
-        const char * txt = lv_checkbox_get_text(obj);
+        char * txt = (char*)lv_checkbox_get_text(obj);
         const char * state = lv_obj_get_state(obj) & LV_STATE_CHECKED ? "Checked" : "Unchecked";
-        LV_LOG_USER("%s: %s", txt, state);
+        // Serial.println(txt);
+        // Serial.println(state);
+       tCharacteristic->setValue(txt);
+       tCharacteristic->notify();
     }
 }
 
@@ -124,7 +127,7 @@ void init_todoList(lv_obj_t* scr,lv_obj_t* list,lv_style_t* list_style){
         lv_checkbox_set_text(todoList_check_boxes, tasks[i]);
         lv_obj_set_style_text_color(todoList_check_boxes,LV_COLOR_WHITE, 0);
         i++;
-        // lv_obj_add_event_cb(todoList_check_boxes, add_button_pressed, LV_E, NULL);
+        lv_obj_add_event_cb(todoList_check_boxes, todoListevent_cb, LV_EVENT_ALL, NULL);
     }
 
     /*Update the buttons position manually for first*/
@@ -155,10 +158,10 @@ void update_todoList(lv_obj_t* scr,lv_obj_t* list,lv_style_t* list_style){
 
     uint32_t i = 0;
     while(tasks[i] != NULL){
-         todoList_check_boxes = lv_checkbox_create(list);
+        todoList_check_boxes = lv_checkbox_create(list);
         lv_checkbox_set_text(todoList_check_boxes, tasks[i]);
+        // lv_obj_add_event_cb(todoList_check_boxes, todoListevent_cb, LV_EVENT_ALL, NULL);
         i++;
-        // lv_obj_add_event_cb(todoList_check_boxes, add_button_pressed, LV_E, NULL);
     }
 
     // lv_obj_t * btn = lv_btn_create(list);
