@@ -34,6 +34,7 @@ static std::string ble_time_value;
 bool read_song = false;
 
 char* tasks[20];
+bool tasks_status[20];
 int numberOfTasks = 0;
 
 /**
@@ -81,6 +82,7 @@ class MusicBLECallback : public BLECharacteristicCallbacks{
 class TimeBLECallback : public BLECharacteristicCallbacks{
   void onWrite(BLECharacteristic* pCharacteristic){
      pAdvertising->stop();
+      numberOfTasks = 0;
       std::string valor = "";
       std::string value = pCharacteristic->getValue();
       if (value.length() > 0) {
