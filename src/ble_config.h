@@ -2,7 +2,7 @@
  * @file ble_config.h
  * @author Akhilesh Warty
  * @brief BLE Server Module for Smartwatch
- * @version 0.2
+ * @version 0.3
  * @date 2023-09-25
  * 
  * @copyright Copyright (c) 2023
@@ -29,8 +29,12 @@ static BLEAdvertising* pAdvertising;
 
 std::string ble_music_value = "";
 std::string ble_music_artist = "";
+std::string ble_todo_tasks = "";
 static std::string ble_time_value;
 bool read_song = false;
+
+char* tasks[20];
+int numberOfTasks = 0;
 
 /**
  * BLE Callbacks for Each Characteristic
@@ -84,9 +88,22 @@ class TimeBLECallback : public BLECharacteristicCallbacks{
           valor = valor + value[i];
         }
       }
-      ble_time_value = valor;
-      // Serial.print(ble_music_value.c_str());
-      pAdvertising->start();
+      ble_todo_tasks = value;
+      // Returns first token
+      char *token = strtok((char*)ble_todo_tasks.c_str(), ";");
+   
+      // Keep printing tokens while one of the
+      // delimiters present in str[].
+      while (token != NULL && numberOfTasks < 20)
+      {
+
+        tasks[numberOfTasks] = token;
+        Serial.println(token);
+        token = strtok(NULL, ";");
+        numberOfTasks++;
+      }
+        // Serial.print(ble_music_value.c_str());
+        pAdvertising->start();
   }
 
   void onRead(BLECharacteristic* pCharacteristic){

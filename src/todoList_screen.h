@@ -21,7 +21,7 @@ static lv_style_t* add_todoList_button_style;
 
 lv_timer_t* updateTasks;
 
-char *tasks[20] = {"Geek", "Geeks", "Geekfor"};
+// char *tasks[20] = {"Geek", "Geeks", "Geekfor"};
 
 void init_todoList_screen(lv_obj_t* act_scr);
 void init_todoList(lv_obj_t* scr,lv_obj_t* list,lv_style_t* list_style);
@@ -40,7 +40,7 @@ void init_todoList_screen(lv_obj_t* act_scr){
     lv_obj_add_event_cb(todo_screen, todo_screen_back_event_cb, LV_EVENT_GESTURE, NULL);
     lv_scr_load(todo_screen);
     init_todoList(todo_screen,todoList,todoList_style);
-    updateTasks = lv_timer_create(updateTasksMethod, 10000 , NULL);
+    // updateTasks = lv_timer_create(updateTasksMethod, 10000 , NULL);
     // lv_timer_ready(updateTasks);
 }
 
@@ -161,12 +161,12 @@ void update_todoList(lv_obj_t* scr,lv_obj_t* list,lv_style_t* list_style){
         // lv_obj_add_event_cb(todoList_check_boxes, add_button_pressed, LV_E, NULL);
     }
 
-    lv_obj_t * btn = lv_btn_create(list);
-    lv_obj_set_width(btn, lv_pct(200));
-    // lv_obj_add_event_cb(btn, add_button_pressed, LV_EVENT_CLICKED, NULL);
+    // lv_obj_t * btn = lv_btn_create(list);
+    // lv_obj_set_width(btn, lv_pct(200));
+    // // lv_obj_add_event_cb(btn, add_button_pressed, LV_EVENT_CLICKED, NULL);
 
-    lv_obj_t * label = lv_label_create(btn);
-    lv_label_set_text_fmt(label,"Add Event");
+    // lv_obj_t * label = lv_label_create(btn);
+    // lv_label_set_text_fmt(label,"Add Event");
 
     /*Update the buttons position manually for first*/
     lv_event_send(list, LV_EVENT_SCROLL, NULL);
