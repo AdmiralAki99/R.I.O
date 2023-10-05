@@ -404,6 +404,9 @@ void init_ble_server(){
   tCharacteristic->setCallbacks(new TimeBLECallback());
   pService->start();
 
+  todoStateCharacteristic = pService->createCharacteristic(TODO_CHARACTERISTIC_UUID,BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE);
+  todoStateCharacteristic->setCallbacks(new TodoStateBLECallback());
+
   pAdvertising = pServer->getAdvertising();
   pAdvertising->addServiceUUID(SERVICE_UUID);
   pAdvertising->setScanResponse(true);

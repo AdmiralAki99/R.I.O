@@ -25,6 +25,7 @@ static BLEServer* pServer;
 static BLEService* pService;
 static BLECharacteristic* mCharacteristic;
 static BLECharacteristic* tCharacteristic;
+static BLECharacteristic* todoStateCharacteristic;
 static BLEAdvertising* pAdvertising;
 
 std::string ble_music_value = "";
@@ -75,6 +76,16 @@ class MusicBLECallback : public BLECharacteristicCallbacks{
     void onRead(BLECharacteristic* pCharacteristic){
       
     }
+};
+
+class TodoStateBLECallback : public BLECharacteristicCallbacks{
+  void onWrite(BLECharacteristic* pCharacteristic){
+
+  }
+
+  void onRead(BLECharacteristic* pCharacteristic){
+    
+  }
 };
 
 // Time Callback handles time metadata

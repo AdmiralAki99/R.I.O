@@ -17,7 +17,6 @@ static lv_obj_t* drone_feed_screen;
 static lv_obj_t* video_feed;
 static lv_color_t feed_buffer[LV_CANVAS_BUF_SIZE_TRUE_COLOR(200,200)];
 static lv_obj_t* video_frame;
-
 static lv_obj_t* video_feed_canvas;
 
 
