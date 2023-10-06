@@ -388,6 +388,8 @@ void init_ble_server(){
 
   BLEDevice::init("Lazarus");
 
+  tasks_status = new bool[20];
+
   pServer = BLEDevice::createServer();
   pService = pServer->createService(SERVICE_UUID);
   mCharacteristic = pService->createCharacteristic(

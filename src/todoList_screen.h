@@ -126,6 +126,9 @@ void init_todoList(lv_obj_t* scr,lv_obj_t* list,lv_style_t* list_style){
          todoList_check_boxes = lv_checkbox_create(list);
         lv_checkbox_set_text(todoList_check_boxes, tasks[i]);
         lv_obj_set_style_text_color(todoList_check_boxes,LV_COLOR_WHITE, 0);
+        if(tasks_status[i]){
+            lv_obj_add_state(todoList_check_boxes, LV_STATE_CHECKED);
+        }
         i++;
         lv_obj_add_event_cb(todoList_check_boxes, todoListevent_cb, LV_EVENT_ALL, NULL);
     }

@@ -35,7 +35,7 @@ static std::string ble_time_value;
 bool read_song = false;
 
 char* tasks[20];
-bool tasks_status[20];
+bool* tasks_status;
 int numberOfTasks = 0;
 
 /**
