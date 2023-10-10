@@ -80,7 +80,20 @@ class MusicBLECallback : public BLECharacteristicCallbacks{
 
 class TodoStateBLECallback : public BLECharacteristicCallbacks{
   void onWrite(BLECharacteristic* pCharacteristic){
-
+    std::string status = pCharacteristic->getValue();
+    if(status.length() > 0){
+      //Upper bound for the Task String is 20
+      for(int i=0;i<status.length();i++){
+        if(status[i] == 'T'){
+          // Task is checked
+          tasks_status[i] = true;
+        }else{
+          //Task is unchecked
+          tasks_status[i] = false;
+        }
+      }
+    }
+    pAdvertising->start();
   }
 
   void onRead(BLECharacteristic* pCharacteristic){
