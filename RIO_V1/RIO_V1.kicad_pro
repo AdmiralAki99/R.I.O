@@ -56,8 +56,7 @@
         }
       ],
       "drc_exclusions": [
-        "copper_edge_clearance|118438356|103852370|84621afa-b66d-4253-8a61-e4b1b9ecce03|859aad99-fb79-42d5-837a-395830cfafe7",
-        "courtyards_overlap|133636522|85287212|a0eedbc2-2848-4c12-959f-8aaeb5d1de2c|a594883b-9828-4aa6-af72-356584f1562c"
+        "copper_edge_clearance|118438356|103852370|84621afa-b66d-4253-8a61-e4b1b9ecce03|859aad99-fb79-42d5-837a-395830cfafe7"
       ],
       "meta": {
         "version": 2

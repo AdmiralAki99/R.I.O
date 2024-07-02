@@ -1,4 +1,4 @@
-22653590631431869
+22658767165794931
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -82620,6 +82620,13 @@ Potentiometer vertical Vishay T73YP
 0
 3
 3
+RC0402FR-07160KL
+RESC1005X40N
+
+
+0
+2
+2
 RC1206FR-0710KL
 RESC3116X65N
 
@@ -83747,6 +83754,20 @@ WiFi IEEE802.11 b/g/n
 0
 44
 44
+RMCF0402FT442K
+RESC1005X35N
+
+
+0
+2
+2
+RT0603BRD0750KL
+RESC1608X55N
+
+
+0
+2
+2
 Relay_SMD
 Relay_2P2T_10x6mm_TE_IMxxG
 Signal Relay, 10x6mm, 2 Form C, Gull Wings, https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Data+Sheet%7F108-98001%7FZ.1%7Fpdf%7FEnglish%7FENG_DS_108-98001_Z.1.pdf
