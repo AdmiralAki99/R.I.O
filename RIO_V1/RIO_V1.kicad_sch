@@ -1883,7 +1883,7 @@
     (property "Value" "POGO_Conn" (at 196.85 102.87 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Connector_FFC-FPC:TE_84952-4_1x04-1MP_P1.0mm_Horizontal" (at 195.58 99.06 0)
+    (property "Footprint" "Connector:AMPHENOL_59453-042110ECHLF" (at 195.58 99.06 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 195.58 99.06 0)
