@@ -1,4 +1,4 @@
-22658767165794931
+22669088545838144
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -6370,6 +6370,13 @@ capacitor tantalum
 2
 2
 Connector
+AMPHENOL_59453-042110ECHLF
+
+
+0
+6
+6
+Connector
 Banana_Cliff_FCR7350x_S16N-PC_Horizontal
 Cliff single 4mm shrouded banana panel socket, through-hole, horizontal, https://www.cliffuk.co.uk/products/testleads/sockets/S16NPC.pdf
 cliff 4mm socket jack banana
@@ -6502,6 +6509,20 @@ spring contact emi emc shield
 0
 1
 1
+Connector
+TE_3-641207-2
+
+
+0
+2
+2
+Connector
+TE_171826-2
+
+
+0
+2
+2
 Connector
 Tag-Connect_TC2030-IDC-FP_2x03_P1.27mm_Vertical
 Tag-Connect programming header; http://www.tag-connect.com/Materials/TC2030-IDC.pdf
@@ -55068,6 +55089,13 @@ RES_ERA8ARW332V
 0
 2
 2
+EVQ-P4HB3B
+SW_EVQ-P4HB3B
+
+
+0
+4
+4
 Ferrite_THT
 LairdTech_28C0236-0JW-10
 Ferrite, vertical, LairdTech 28C0236-0JW-10, https://assets.lairdtech.com/home/brandworld/files/28C0236-0JW-10.pdf, JW Miller core https://www.bourns.com/products/magnetic-products/j.w.-miller-through-hole-ferrite-beads-emi-filters
@@ -87457,6 +87485,13 @@ Logo WEEE
 0
 0
 0
+TL1014BF160QG
+TL1014BF160QG
+<b>TL1014B</b><br>
+
+0
+4
+4
 TL1105SF160Q
 SW_TL1105SF160Q
 
@@ -93120,3 +93155,10 @@ Varistor VF
 0
 2
 2
+Wurther_Elektronik_TS
+SMT_1045822_WRE
+
+436331045822 
+0
+4
+4
