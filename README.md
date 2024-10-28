@@ -6,7 +6,12 @@ A basic smartwatch software that is used for personal use and understanding how 
 
 ## Render
 
+
+https://github.com/user-attachments/assets/5ccf8013-91de-4bed-8570-e81a325c24fe
+
+
 ## Schematic
+![Schematic_page-0001](https://github.com/user-attachments/assets/b03534dd-5a9a-4026-88a8-e5e26b66c9ee)
 
 
 ## Features
